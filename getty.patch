@@ -1,0 +1,4 @@
+39c39
+< ExecStart=-/sbin/agetty -o '-p -- \\u' --noclear - $TERM
+---
+> ExecStart=-/sbin/agetty -a root --noclear - $TERM

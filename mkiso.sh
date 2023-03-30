@@ -28,6 +28,9 @@ rm -rf $ACACIA_ROOT/iso
 echo "Setting password..."
 systemd-nspawn -D $ACACIA_ROOT usermod --password $(echo root | openssl passwd -1 -stdin) root
 
+echo "Enabling autologin..."
+patch $ACACIA_ROOT/usr/lib/systemd/system/getty@.service -i $SCRIPT_DIR/getty.patch
+
 echo "Enabling NetworkManager..."
 systemd-nspawn -D $ACACIA_ROOT systemctl enable NetworkManager
 
