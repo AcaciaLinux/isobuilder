@@ -8,7 +8,7 @@ ACACIA_ROOT=./acacia_root
 SQUASHFS=$SCRIPT_DIR/squashfs.img
 LEAF=leaf
 BASE_PKGS="base lvm2 systemd dbus iproute2 tar cryptsetup squashfs-tools linux-lts dracut bash grub libisoburn mtools"
-ISO_PKGS="setup-scripts vim networkmanager e2fsprogs dosfstools leaf seed"
+ISO_PKGS="setup-scripts vim nano networkmanager e2fsprogs dosfstools leaf seed linux-firmware"
 
 $LEAF --root $ACACIA_ROOT update --noAsk
 $LEAF --root $ACACIA_ROOT --downloadCache $SCRIPT_DIR/leaf_download_cache install --noAsk -f $BASE_PKGS $ISO_PKGS
