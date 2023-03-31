@@ -8,7 +8,7 @@ echo "Creating AcaciaLinux ISOs..."
 mkdir -pv $SCRIPT_DIR/builds/{core,core-fw,desk,desk-fw}
 
 create_iso() {
-     ACACIA_ROOT=$SCRIPT_DIR/builds/$1/root SQUASHFS=$SCRIPT_DIR/builds/$1.squash ISO=$3 ISO_PKGS=$4 $SCRIPT_DIR/mkiso.sh
+     ACACIA_ROOT=$SCRIPT_DIR/builds/$1/root SQUASHFS=$SCRIPT_DIR/builds/$1.squash ISO=$2 ISO_PKGS=$3 $SCRIPT_DIR/mkiso.sh
 }
 
 create_iso core AcaciaLinux-core-$DATE.iso

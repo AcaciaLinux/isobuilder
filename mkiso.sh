@@ -64,7 +64,7 @@ echo "Creating grub-rescue..."
 systemd-nspawn -D $ACACIA_ROOT grub-mkrescue /iso -o ACACIA.iso -- -volid ACACIA
 
 echo "Moving ISO out of root..."
-mv -v $ACACIA_ROOT/ACACIA.iso $SCRIPT_DIR/ACACIA.iso
+mv -v $ACACIA_ROOT/ACACIA.iso $ISO
 
 echo "DONE!"
 echo "Created '$ISO'"
