@@ -4,11 +4,20 @@ set -e
 
 SCRIPT_DIR=$(dirname $(realpath $0))
 
-ACACIA_ROOT=./acacia_root
-SQUASHFS=$SCRIPT_DIR/squashfs.img
-LEAF=leaf
+: "${ACACIA_ROOT:=$SCRIPT_DIR/acacia_root}"
+: "${SQUASHFS:=$SCRIPT_DIR/squashfs.img}"
+: "${LEAF:=leaf}"
+: "${ISO:=$SCRIPT_DIR/ACACIA.iso}"
+
 BASE_PKGS="base lvm2 systemd dbus iproute2 tar cryptsetup squashfs-tools linux-lts dracut bash grub libisoburn mtools"
-ISO_PKGS="setup-scripts vim nano networkmanager e2fsprogs dosfstools leaf seed linux-firmware"
+ISO_PKGS="$ISO_PKGS setup-scripts vim nano networkmanager e2fsprogs dosfstools leaf seed"
+
+echo "Creating '$ISO'"
+echo "Acacia root: '$ACACIA_ROOT'"
+echo "Using leaf: '$LEAF'"
+echo "Squashfs: '$SQUASHFS'"
+echo "Installing base packages: '$BASE_PKGS'"
+echo "Installing additional packages: '$ISO_PKGS'"
 
 $LEAF --root $ACACIA_ROOT update --noAsk
 $LEAF --root $ACACIA_ROOT --downloadCache $SCRIPT_DIR/leaf_download_cache install --noAsk -f $BASE_PKGS $ISO_PKGS
@@ -56,4 +65,12 @@ systemd-nspawn -D $ACACIA_ROOT grub-mkrescue /iso -o ACACIA.iso -- -volid ACACIA
 
 echo "Moving ISO out of root..."
 mv -v $ACACIA_ROOT/ACACIA.iso $SCRIPT_DIR/ACACIA.iso
+
+echo "DONE!"
+echo "Created '$ISO'"
+echo "Acacia root: '$ACACIA_ROOT'"
+echo "Using leaf: '$LEAF'"
+echo "Squashfs: '$SQUASHFS'"
+echo "Installed base packages: '$BASE_PKGS'"
+echo "Installed additional packages: '$ISO_PKGS'"
 
