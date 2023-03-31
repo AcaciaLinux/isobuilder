@@ -12,7 +12,7 @@ create_iso() {
 }
 
 create_iso core AcaciaLinux-core-$DATE.iso
-create_iso core-fq AcaciaLinux-core-fw-$DATE.iso "linux-firmware"
+create_iso core-fw AcaciaLinux-core-fw-$DATE.iso "linux-firmware"
 
 create_iso desk AcaciaLinux-desk-$DATE.iso "sway xorg-xinit xorg-fbdev xorg-libinput llvm alacritty"
 create_iso desk-fw AcaciaLinux-desk-fw-$DATE.iso "linux-firmware sway xorg-xinit xorg-fbdev xorg-libinput llvm alacritty"
